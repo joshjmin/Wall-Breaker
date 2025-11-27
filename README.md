@@ -2,6 +2,8 @@
 # 🕹️ FPGA Breakout Game
 
 > A fully hardware-implemented classic arcade game built from scratch in Verilog HDL for the Altera DE1 FPGA board
+>
+> Video Demo: 
 ---
 ## 🎮 How to Play
 
@@ -139,6 +141,8 @@ vga_demo_original (TOP)
 ```
 
 ---
+<img width="1024" height="1024" alt="ChatGPT Image Nov 26, 2025, 07_32_34 PM" src="https://github.com/user-attachments/assets/e51795c2-255f-4fa8-9008-54f0371998a4" />
+<img width="1536" height="1024" alt="ChatGPT Image Nov 26, 2025, 07_46_02 PM" src="https://github.com/user-attachments/assets/3b1a3d1a-55a7-470a-8460-8cebd35a8da1" />
 
 ## 🤝 Acknowledgments
 
