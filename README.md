@@ -1,12 +1,31 @@
 # Wall-Breaker
-# 🎮 FPGA Breakout Game
+# 🕹️ FPGA Breakout Game
 
 > A fully hardware-implemented classic arcade game built from scratch in Verilog HDL for the Altera DE1 FPGA board
 ---
+## 🎮 How to Play
 
-## 🌟 Project Highlights
+1. **Power on** - Start screen appears automatically
+2. **Press `Enter`** - Begin gameplay
+3. **Use `A` / `D`** - Move paddle left/right
+4. **Press `W`** - Launch ball (use `SW[0]` to choose initial direction)
+5. **Break all bricks** - Win the game!
+6. **Miss the ball** - Game over (press `Spacebar` to restart)
 
-This project demonstrates a complete **hardware-only** implementation of the classic Breakout game, showcasing advanced digital design concepts and FPGA resource optimization. Every pixel, every collision, and every game state is computed in parallel hardware logic—no software involved!
+**Pro tip:** Hit the ball with the left third of the paddle to send it left, right third to send it right, or center for straight bounces!
+
+---
+
+## 🔧 Build Instructions
+
+1. Open project in **Quartus II** (v13.0 or later)
+2. Ensure `.mif` files are in project root:
+   - `startscreen.mif`
+   - `gameover.mif`
+   - `black_640_9.mif` (VGA background)
+3. Set `vga_demo_original` as top-level entity
+4. Compile and program to DE1 board
+5. Connect VGA monitor and PS/2 keyboard
 
 ---
 
@@ -118,68 +137,6 @@ vga_demo_original (TOP)
 ├── gameover_mem (ROM)         // Game over image storage
 └── vga_adapter                // VGA signal generator
 ```
-
----
-
-## 🎓 Learning Outcomes
-
-This project demonstrates mastery of:
-
-✅ **Digital Design Principles**
-- Finite State Machine (FSM) design and optimization
-- Combinational vs. sequential logic partitioning
-- Timing closure and clock domain management
-
-✅ **Hardware-Software Interface**
-- PS/2 keyboard protocol implementation with scancode parsing
-- VGA timing generation and synchronization
-- Memory-mapped I/O for 7-segment displays
-
-✅ **FPGA-Specific Skills**
-- Altera IP core integration (altsyncram for ROM)
-- Resource utilization optimization (LUTs, registers, block RAM)
-- Modular design for complex systems
-
-✅ **Real-Time Systems**
-- Frame-rate management and synchronization
-- Collision detection in hardware
-- Multi-module arbitration and priority handling
-
----
-
-## 🎮 How to Play
-
-1. **Power on** - Start screen appears automatically
-2. **Press `Enter`** - Begin gameplay
-3. **Use `A` / `D`** - Move paddle left/right
-4. **Press `W`** - Launch ball (use `SW[0]` to choose initial direction)
-5. **Break all bricks** - Win the game!
-6. **Miss the ball** - Game over (press `Spacebar` to restart)
-
-**Pro tip:** Hit the ball with the left third of the paddle to send it left, right third to send it right, or center for straight bounces!
-
----
-
-## 🔧 Build Instructions
-
-1. Open project in **Quartus II** (v13.0 or later)
-2. Ensure `.mif` files are in project root:
-   - `startscreen.mif`
-   - `gameover.mif`
-   - `black_640_9.mif` (VGA background)
-3. Set `vga_demo_original` as top-level entity
-4. Compile and program to DE1 board
-5. Connect VGA monitor and PS/2 keyboard
-
----
-
-## 📸 Screenshots
-
-*[Add your screenshots here!]*
-- Start screen with colorful graphics
-- Gameplay showing ball, paddle, and brick array
-- Game over screen overlay
-- Score display on HEX segments
 
 ---
 
