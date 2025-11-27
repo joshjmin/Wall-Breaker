@@ -1,0 +1,50 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dc:/Users/Jonat/ece241/ECE241_FinalProject/trial/sim
+vbrick_display
+Z1 !s110 1763565803
+!i10b 1
+!s100 Oia;]B@Tg9K;j59ODeb>P0
+I_iO>@00nQD17>c]`jaiCF3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1763489895
+8..\brick_display.v
+F..\brick_display.v
+L0 12
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1763565803.000000
+!s107 ..\brick_display.v|
+!s90 ..\brick_display.v|
+!i113 1
+Z5 tCvgOpt 0
+vtb_brick_test
+R1
+!i10b 1
+!s100 gHaF1e;Qbm3F>[flaaejM0
+I5]iPYz`cHm6R<X9O2nBQ13
+R2
+R0
+w1763565791
+8tb_brick_test.v
+Ftb_brick_test.v
+L0 6
+R3
+r1
+!s85 0
+31
+R4
+!s107 tb_brick_test.v|
+!s90 tb_brick_test.v|
+!i113 1
+R5

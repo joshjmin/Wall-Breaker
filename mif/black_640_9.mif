@@ -1,0 +1,9 @@
+WIDTH=9;
+DEPTH=307200;
+
+ADDRESS_RADIX=UNS;
+DATA_RADIX=HEX;
+
+CONTENT BEGIN
+    [0..307199] : 000;  -- Black background for 640x480
+END;

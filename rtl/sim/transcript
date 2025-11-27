@@ -1,0 +1,207 @@
+# vsim -t 1ns tb_brick_test 
+# Start time: 10:23:50 on Nov 19,2025
+# Loading work.tb_brick_test
+# Loading work.brick_display
+do wave_brick.do
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Jonat  Hostname: DESKTOP-O1RB2RL  ProcessID: 29168
+#           Attempting to use alternate WLF file "./wlfth7n0ei".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlfth7n0ei
+# Waves added successfully!
+# 
+# ==========================================
+# SIGNAL GUIDE:
+# ==========================================
+# State Encoding:
+#   00 = INIT  (Drawing all bricks at startup)
+#   01 = IDLE  (Checking for collisions)
+#   10 = ERASE (Erasing hit brick)
+# 
+# Brick Layout:
+#   24 bricks total: 8 columns x 3 rows
+#   Each brick: 80x20 pixels
+#   Row 0 (0-7):   RED   (Y: 0-19)
+#   Row 1 (8-15):  GREEN (Y: 20-39)
+#   Row 2 (16-23): BLUE  (Y: 40-59)
+# 
+# brick_alive (24-bit binary):
+#   Bit N = 1: Brick N is alive
+#   Bit N = 0: Brick N is destroyed
+# 
+# Color Format (9-bit): RRR_GGG_BBB
+#   Red:   111_000_000
+#   Green: 000_111_000
+#   Blue:  000_000_111
+#   Black: 000_000_000
+# 
+# ==========================================
+# SUGGESTED COMMANDS:
+# ==========================================
+# Run full test:      run 2ms
+# Run until IDLE:     run -all
+# Zoom to fit:        wave zoom full
+# Find collision:     when {brick_hit == 1}
+# 
+run 2ms
+# =======================================================
+# ===   Brick Display & Collision Detection Test     ===
+# ===   CORRECTED VERSION - Single Brick Hits         ===
+# =======================================================
+# 
+# BRICK LAYOUT:
+#   24 bricks: 8 columns × 3 rows
+#   Each brick: 80×20 pixels
+#   Row 0 (RED):   Bricks 0-7   at Y: 0-19
+#   Row 1 (GREEN): Bricks 8-15  at Y: 20-39
+#   Row 2 (BLUE):  Bricks 16-23 at Y: 40-59
+# 
+# BALL SIZE: 16×16 pixels
+#   Ball position = top-left corner
+#   Ball at (X,Y) occupies X to X+15, Y to Y+15
+# =======================================================
+# 
+# Time: 200 - Reset released
+# Time: 200 - Brick module initializing...
+#   [INIT] Progress: 5000 pixels drawn (brick 4/24)
+#   [INIT] Progress: 10000 pixels drawn (brick 7/24)
+#   [INIT] Progress: 15000 pixels drawn (brick 10/24)
+#   [INIT] Progress: 20000 pixels drawn (brick 13/24)
+#   [INIT] Progress: 25000 pixels drawn (brick 16/24)
+#   [INIT] Progress: 30000 pixels drawn (brick 19/24)
+#   [INIT] Progress: 35000 pixels drawn (brick 22/24)
+# 
+# Time: 768210 - *** All bricks drawn ***
+# Time: 768210 - Bricks remaining: 24/24
+# 
+# [STATE] IDLE (checking collisions)
+# ╔════════════════════════════════════════════════════╗
+# ║ TEST 1: No Collision (Ball Away From Bricks)      ║
+# ╚════════════════════════════════════════════════════╝
+# Ball position: (320, 240)
+# Expected: No collision detected
+# ✓ PASS: No false collision detected
+# 
+# ╔════════════════════════════════════════════════════╗
+# ║ TEST 2: Hit Top-Left Brick (Brick 0)              ║
+# ╚════════════════════════════════════════════════════╝
+# Ball moved to: (10, 2)
+# Ball occupies: X:10-25, Y:2-17
+# Target: Brick 0 (Column 0, Row 0) at (0, 0)
+# Expected collision: YES
+# ✓ Collision detected at time 774250
+# ✓ PASS: Correct brick hit (0, 0)
+# >>> BRICK HIT #1 at position (0, 0)
+#     Bricks remaining: 23/24
+# [STATE] ERASE (removing brick)
+# Brick erased, back to IDLE
+# [STATE] IDLE (checking collisions)
+# 
+# ╔════════════════════════════════════════════════════╗
+# ║ TEST 3: Hit Middle Brick (Brick 12)               ║
+# ╚════════════════════════════════════════════════════╝
+# Ball moved to: (250, 20)
+# Ball occupies: X:250-265, Y:20-35
+# Target: Brick 12 (Column 4, Row 1) at (240, 20)
+# Expected collision: YES
+# ✓ Collision detected at time 808290
+# ✓ PASS: Correct brick hit (240, 20)
+# >>> BRICK HIT #2 at position (240, 20)
+#     Bricks remaining: 22/24
+# [STATE] ERASE (removing brick)
+# Brick erased, back to IDLE
+# [STATE] IDLE (checking collisions)
+# 
+# ╔════════════════════════════════════════════════════╗
+# ║ TEST 4: Hit Rightmost Top Brick (Brick 7)         ║
+# ╚════════════════════════════════════════════════════╝
+# Ball moved to: (570, 2)
+# Ball occupies: X:570-585, Y:2-17
+# Target: Brick 7 (Column 7, Row 0) at (560, 0)
+# Expected collision: YES
+# ✓ Collision detected at time 842330
+# ✓ PASS: Correct brick hit (560, 0)
+# >>> BRICK HIT #3 at position (560, 0)
+#     Bricks remaining: 21/24
+# [STATE] ERASE (removing brick)
+# Brick erased, back to IDLE
+# [STATE] IDLE (checking collisions)
+# 
+# ╔════════════════════════════════════════════════════╗
+# ║ TEST 5: Hit Bottom Row Brick (Brick 20)           ║
+# ╚════════════════════════════════════════════════════╝
+# Ball moved to: (330, 40)
+# Ball occupies: X:330-345, Y:40-55
+# Target: Brick 20 (Column 4, Row 2) at (320, 40)
+# Expected collision: YES
+# ✓ Collision detected at time 876370
+# ✓ PASS: Correct brick hit (320, 40)
+# >>> BRICK HIT #4 at position (320, 40)
+#     Bricks remaining: 20/24
+# [STATE] ERASE (removing brick)
+# Brick erased, back to IDLE
+# [STATE] IDLE (checking collisions)
+# 
+# ╔════════════════════════════════════════════════════╗
+# ║ TEST 6: Busy Signal Coordination                  ║
+# ╚════════════════════════════════════════════════════╝
+# Testing: Erase operation should stall when paddle_busy=1
+# Ball moved to: (90, 2)
+# Target: Brick 1 at (80, 0)
+# ✓ Collision detected
+# >>> BRICK HIT #5 at position (80, 0)
+#     Bricks remaining: 19/24
+# [STATE] ERASE (removing brick)
+# Setting paddle_busy = 1 (erase should stall)
+# ✓ PASS: Erase stalled while paddle busy
+# Clearing paddle_busy = 0 (erase should resume)
+# ✓ Erase completed after paddle became available
+# [STATE] IDLE (checking collisions)
+# 
+# ╔════════════════════════════════════════════════════╗
+# ║ TEST 7: Boundary Collision Detection              ║
+# ╚════════════════════════════════════════════════════╝
+# Test 7a: Ball at right edge of brick
+# Ball at (64, 2), extends to X:79
+# Should overlap Brick 0 (ends at X:79)
+# ✗ FAIL: Edge collision missed
+# Test 7b: Ball outside brick area
+# Ball at (320, 100)
+# Should NOT hit any brick
+# ✓ PASS: No false positive outside brick area
+# 
+# ╔════════════════════════════════════════════════════╗
+# ║ TEST 8: Rapid Ball Movement (Stress Test)         ║
+# ╚════════════════════════════════════════════════════╝
+# Rapidly moving ball through multiple bricks...
+# >>> BRICK HIT #6 at position (160, 0)
+#     Bricks remaining: 18/24
+# [STATE] ERASE (removing brick)
+# [STATE] IDLE (checking collisions)
+# >>> BRICK HIT #7 at position (160, 20)
+#     Bricks remaining: 17/24
+# [STATE] ERASE (removing brick)
+# [STATE] IDLE (checking collisions)
+# >>> BRICK HIT #8 at position (160, 40)
+#     Bricks remaining: 16/24
+# [STATE] ERASE (removing brick)
+# ✓ Stress test complete
+# 
+# [STATE] IDLE (checking collisions)
+# =======================================================
+# ===              TEST SUMMARY                       ===
+# =======================================================
+# Total bricks hit: 8
+# Bricks remaining: 16/24
+# Expected: 9 bricks hit (1 per test + 3 in stress test)
+# 
+# RESULT: MOSTLY PASS - Minor discrepancies
+# 
+# === Simulation Complete ===
+# ** Note: $finish    : tb_brick_test.v(407)
+#    Time: 1068630 ns  Iteration: 0  Instance: /tb_brick_test
+# 1
+# Break in Module tb_brick_test at tb_brick_test.v line 407
+quit -sim
+# End time: 10:18:44 on Nov 21,2025, Elapsed time: 47:54:54
+# Errors: 0, Warnings: 2
