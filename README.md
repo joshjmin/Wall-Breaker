@@ -4,6 +4,8 @@
 > A fully hardware-implemented classic arcade game built from scratch in Verilog HDL for the Altera DE1 FPGA board
 >
 > Video Demo: https://drive.google.com/file/d/1IMWT7uaqt9GxymF1pTTBZqq-FgwMZNmt/view?usp=sharing
+> [FPGA Final Project.pdf](https://github.com/user-attachments/files/35424727/FPGA.Final.Project.pdf)
+
 ---
 ## 🎮 How to Play
 
